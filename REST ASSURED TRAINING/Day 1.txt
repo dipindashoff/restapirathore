@@ -39,3 +39,16 @@ Sample Data in JSON:
 	  "Id": 126,
 	  "LaptopName": "Latitude"
 	}
+	
+	
+1) A simple GET request that prints the response (by default in XML)
+2) Set response content to JSON using 2 methods
+   a. given().accept(ContentType.JSON)
+   b. Map<String, String> headers = new HashMap<>();
+      headers.put("Accept", "application/json");
+      Response response2 = given().headers(headers)
+   Set headers to json/xml/text; text should throw "HTTP 406 Not Acceptable" error
+3) Validate Status Code using thenReturn() and then()
+   a) thenReturn prints the response body or prettyPrint it; has no in-built assert methods
+   b) then() cannot print the body but uses its assertThat() method to validate statusCode
+   Use assertThat() to test HttpStatus.SC_OK & HttpStatus.SC_NOT_FOUND responses
