@@ -1,0 +1,28 @@
+Maven Dependency:
+ <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>4.3.2</version>
+      <scope>test</scope>
+ </dependency>
+
+Static imports:
+ import static io.restassured.RestAssured.*;
+ import static io.restassured.matcher.RestAssuredMatchers.*;
+ import static org.hamcrest.Matchers.*;
+
+SETUP APPLICATION IN LOCAL:
+ Install Tomcat Server->Use port 8083 as 8080 is used by Jenkins
+ Open Services.msc->Start Apache Tomcat Server 8.5.
+ Open browser->Go to localhost:8083.
+ Click [Manager App]->Enter "admin" as both username & password in the sign in popup.
+ Scroll down to 'WAR file to deploy'. Upload 'laptop-bag.war' file & click [Deploy].
+ Veify that '/laptop-bag' is displayed inside Applications table.
+ Open Postman. Send a GET request to 'http://localhost:8083/laptop-bag/webapi/api/all' -> It should return Status as '204 No Content'.
+ 204 No Content is displayed because it does not have any data in it.
+ Send a POST request with payload before testing GET requests.
+
+FIRST GET REQUEST:
+http://localhost:8080/laptop-bag/webapi/api/ping/postman
+
+
